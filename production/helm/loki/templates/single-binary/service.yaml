@@ -19,6 +19,15 @@ spec:
       port: 9095
       targetPort: grpc
       protocol: TCP
+{{- range $index, $port := .Values.singleBinary.extraPorts }}
+    - port: {{ $port.port }}
+      name: {{ $port.name }}
+      {{- if $port.targetPort }}
+      targetPort: {{ $port.targetPort }}
+      {{- else }}
+      targetPort: {{ $port.port }}
+      {{- end -}}
+{{- end }}
   selector:
     {{- include "loki.singleBinarySelectorLabels" . | nindent 4 }}
     {{- with .Values.singleBinary.selectorLabels }}

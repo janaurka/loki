@@ -1074,6 +1074,11 @@ singleBinary:
   extraEnvFrom: []
   # -- Extra containers to add to the single binary loki pod
   extraContainers: []
+  # -- Extra Ports to add to the service
+  extraPorts: []
+  # - name: ServiceName
+  #   port: 9000
+  #   targetPort: 9010 (Optional: Use to explicitly set targetPort if different from port)
   # -- Init containers to add to the single binary pods
   initContainers: []
   # -- Volume mounts to add to the single binary pods
